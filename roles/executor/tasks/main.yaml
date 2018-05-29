@@ -2,6 +2,19 @@
     msg: You need to specify exactly one host to run the executor.
   when: groups.executor|length != 1
 
+- name: Install required packages
+  apt:
+      name: "{{ item }}"
+      state: latest
+  with_items:
+      - git
+      # Galaxy needs python 2.7.
+      - python
+      - virtualenv
+      - postgresql
+      - postgresql-contrib
+      - python-psycopg2
+
 - name: Add server name to the apache.conf
   lineinfile:
       dest: "/etc/apache2/apache2.conf"
@@ -16,19 +29,6 @@
       dest: /etc/default/locale
       regexp: LC_ALL
       line: "LC_ALL=\"en_US.UTF-8\""
-
-- name: Install required packages
-  apt:
-      name: "{{ item }}"
-      state: latest
-  with_items:
-      - git
-      # Galaxy needs python 2.7.
-      - python
-      - virtualenv
-      - postgresql
-      - postgresql-contrib
-      - python-psycopg2
 
 - name: Clone galaxy repo
   git:
