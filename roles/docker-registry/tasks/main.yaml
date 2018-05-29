@@ -25,12 +25,6 @@
     - proxy_http
   notify: restart apache2
 
-- name: Make sure we can use docker_container
-  pip:
-      name : "{{ item }}"
-  with_items:
-      - docker-py
-
 - name: Add a user entry
   htpasswd:
       path: "{{ server_root }}/conf/htpasswd"
