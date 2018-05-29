@@ -1,3 +1,5 @@
+- debug: var=data_share
+
 - name: Ensure shared directory for data
   file:
       dest: "{{ data_share }}"
