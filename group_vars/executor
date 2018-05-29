@@ -2,7 +2,3 @@ galaxy_version: dev
 force: yes
 galaxy_admin: galaxy-admin@example.org
 
-# NFS shares
-executor_directory: /srv/executor
-data_share: "{{ executor_directory }}/database"
-tools_share: "{{ executor_directory }}/tools"

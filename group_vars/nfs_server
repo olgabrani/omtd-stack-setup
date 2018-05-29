@@ -1,2 +1,0 @@
-data_share: "{{ groups.executor.data_share }}"
-tools_share: "{{ groups.executor.tools_share }}"
